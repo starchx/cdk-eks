@@ -12,3 +12,31 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
+
+## Required IAM permissions to run cdk deploy (wildcard used):
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:*",
+                "s3:*",
+                "ssm:*",
+                "iam:*",
+                "ec2:*",
+                "kms:*",
+                "lambda:*",
+                "states:*",
+                "eks:*",
+                "serverlessrepo:*",
+                "autoscaling:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
