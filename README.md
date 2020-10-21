@@ -40,3 +40,24 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
     ]
 }
 ```
+
+## These also required during the process by the dynamically created IAM roles (wildcard used):
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "logs:*",
+                "sts:*",
+                "ecr:*",
+                "elasticloadbalancing.*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```

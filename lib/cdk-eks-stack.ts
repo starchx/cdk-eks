@@ -90,11 +90,13 @@ export class CdkEksStack extends cdk.Stack {
     });
 
     // query the load balancer address
-    // const myServiceAddress = new eks.KubernetesObjectValue(this, 'LoadBalancerAttribute', {
-    //   cluster: cluster,
-    //   objectType: 'service',
-    //   objectName: 'my-service',
-    //   jsonPath: '.status.loadBalancer.ingress[0].hostname', // https://kubernetes.io/docs/reference/kubectl/jsonpath/
-    // });
+    const myServiceAddress = new eks.KubernetesObjectValue(this, 'LoadBalancerAttribute', {
+      cluster: cluster,
+      objectType: 'service',
+      objectName: 'kubernetes',
+      jsonPath: '.spec.clusterIP', // https://kubernetes.io/docs/reference/kubectl/jsonpath/
+    });
+    new cdk.CfnOutput(this, 'K8sServiceClusterIP', { value: myServiceAddress.value })
+
   }
 }
